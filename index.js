@@ -19,7 +19,7 @@ const queue = new Map();
 bot.on("warn", console.warn);
 bot.on("error", console.error);
 bot.on("ready", () => {console.log(`${bot.user.tag} has been successfully turned on!`)
-      bot.user.setActivity('2Play I By iTz_Mafia')});
+      bot.user.setActivity('1Play I By iTz_Mafia')});
 bot.on("disconnect", () => console.log("An error occurred, trying to reconnect!"));
 bot.on("reconnecting", () => console.log("I am reconnecting now..."));
 bot.on("message", async msg => { // eslint-disable-line
@@ -39,17 +39,17 @@ bot.on("message", async msg => { // eslint-disable-line
             .setColor("#7289DA")
             .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
             .setDescription(`
-** الاغاني اوامر **
-2lyrics [song name] - shows the lyrics to the currently-playing song
-2nowplaying - shows the song that is currently playing
-2play <title|URL|subcommand> - plays the provided song
-2playlists - shows the available playlists
-2queue [pagenum] - shows the current queue
-2search <query> - searches Youtube for a provided query
-2skip - votes to skip the current song
-2pause - pauses the current song
-2stop - stops the current song and clears the queue
-2volume [0-100] - sets or shows volume`)
+** اوامر الاغاني  **
+1lyrics [song name] - shows the lyrics to the currently-playing song
+1nowplaying - shows the song that is currently playing
+1play <title|URL|subcommand> - plays the provided song
+1playlists - shows the available playlists
+1queue [pagenum] - shows the current queue
+1search <query> - searches Youtube for a provided query
+1skip - votes to skip the current song
+1pause - pauses the current song
+1stop - stops the current song and clears the queue
+1volume [0-100] - sets or shows volume`)
             .setFooter("©️ 2020 #iTz_Mafia Development");
         msg.channel.send(helpembed);
     }
