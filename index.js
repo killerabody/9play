@@ -15,23 +15,6 @@ const bot = new Client({
 
 const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
-client.on("ready", async () => {
-  console.log("Starting..");
-  let g = client.guilds.get("685505314711142521"); // id server
-  let c = g.channels.get("690763984218882110"); // id channel
-  if (c.type === "voice") {
-    c.join();
-    setInterval(() => {
-      if (
-        (g.me.voiceChannel && g.me.voiceChannelID !== c.id) ||
-        !g.me.voiceChannel
-      )
-        c.join();
-    }, 1);
-  } else {
-    console.log('Failed To Join: \n The Channel Type isn "Listening."');
-}
-});
 
 
 bot.on("warn", console.warn);
