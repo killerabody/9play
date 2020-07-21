@@ -15,7 +15,8 @@ const bot = new Client({
 
 const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
-
+const CHANNELID = "690763984218882110" 
+const GUILDID = "685505314711142521" 
 bot.on("warn", console.warn);
 bot.on("error", console.error);
 bot.on("ready", () => {console.log(`${bot.user.tag} has been successfully turned on!`)
