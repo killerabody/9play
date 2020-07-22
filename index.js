@@ -253,58 +253,5 @@ function play(guild, song) {
     serverQueue.textChannel.send(`🎶  **|**  Start Playing: **\`${song.title}\`**`);
 }
 
-const db = JSON.parse(fs.readFileSync("./stay.json", "UTF8"));
-client.on("message", message => {
-  if (message.content.startsWith(prefix + "setvc")) {
-    if (!message.channel.guild) return;
-    if (!message.member.hasPermission("MANAGE_GUILD"))
-      return message.channel.send(
-        "**Sorry But You Dont Have Permission** `MANAGE_GUILD`"
-      );
-    if (!db)
-      db = {
-        onoff: "Off"
-      };
-    if (db.onoff === "Off")
-      return [
-        message.channel.send(`**The stayvoice Is __On__ !**`),
-        (db.onoff = "On"),
-        client.channels.cache.get(db.svoice,"voice").join()
-      ];
-    if (db.onoff === "On")
-      return [
-        message.channel.send(`**The stayvoice Is __Off__ !**`),
-        (db.onoff = "Off")
-      ];
-    fs.writeFile("./stay.json", JSON.stringify(db), err => {
-      if (err)
-        console.error(err).catch(err => {
-          console.error(err);
-        });
-    });
-  }
-});
-
-client.on ("voiceStateUpdate", async (kahrbaa) => {
-    if (!db)
-    db = {onoff: "Off"}
-  if (db.onoff === "Off") return;
-    if (!db) return console.log ("nope");
-  client.channels.cache.get(db.svoice,"voice").join()
-})
-client.on('message', message => {
-if(message.channel.type === "dm") return;
-if(message.author.bot) return;
-  if (message.content.startsWith(prefix + "setvc")) {
-    if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
-    let roomid = message.content.split(' ').slice(1).join(" ")
-    if(!roomid) return message.reply(`${prefix}setvc \`iD ROOM\``)
-    db.svoice = roomid
-    message.channel.send(`**> StayVoice-ID has been changed to \`\`${roomid}\`\`**`);
-  }
-fs.writeFile("./stay.json", JSON.stringify(db), function(e){
-    if (e) throw e;
-})
-});
 
 bot.login(TOKEN);
